@@ -58,6 +58,52 @@ export default defineConfig({
           },
         },
       },
+      {
+        name: "post",
+        label: "Posts",
+        path: "content/post",
+        format: "mdx",
+        fields: [
+          {
+            name: "title",
+            type: "string",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            name: "date",
+            type: "datetime",
+            label: "Date",
+            required: true,
+          },
+          {
+            name: "body",
+            type: "rich-text",
+            label: "Body",
+            isBody: true,
+          },
+        ],
+        defaultItem: () => {
+          return {
+            title: "New Article",
+            date: new Date(),
+          };
+        },
+        ui: {
+          // This is an DEMO router. You can remove this to fit your site
+          router: ({ document }) => {
+            return `/posts/${document._sys.filename}`;
+          },
+          filename: {
+            slugify: (values) => {
+              return `${(values.title || "")
+                .toLowerCase()
+                .replace(/ /gm, "-")}`.replace(/[^\w\.\/-\s]/gi, "");
+            },
+          },
+        },
+      },
     ],
   },
 });
