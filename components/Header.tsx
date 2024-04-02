@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import {
   RxChatBubble,
+  RxCode,
   RxDividerVertical,
   RxHome,
   RxPerson,
@@ -29,6 +30,12 @@ export default function Header() {
         </Link>
         <Link href="/about" className="sm:hidden">
           <RxPerson />
+        </Link>
+        <Link href="/projects" className="max-sm:hidden">
+          Projects
+        </Link>
+        <Link href="/projects" className="sm:hidden">
+          <RxCode />
         </Link>
       </div>
       <div className="flex justify-between gap-4">

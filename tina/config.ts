@@ -56,6 +56,13 @@ export default defineConfig({
             }
             return undefined;
           },
+          filename: {
+            slugify: (values) => {
+              return `${(values.title || "")
+                .toLowerCase()
+                .replace(/ /gm, "-")}`.replace(/[^\w\.\/-\s]/gi, "");
+            },
+          },
         },
       },
       {
@@ -95,6 +102,41 @@ export default defineConfig({
           router: ({ document }) => {
             return `/posts/${document._sys.filename}`;
           },
+          filename: {
+            slugify: (values) => {
+              return `${(values.title || "")
+                .toLowerCase()
+                .replace(/ /gm, "-")}`.replace(/[^\w\.\/-\s]/gi, "");
+            },
+          },
+        },
+      },
+      {
+        name: "project",
+        label: "Projects",
+        path: "content/project",
+        fields: [
+          {
+            name: "title",
+            type: "string",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            name: "description",
+            type: "string",
+            label: "Description",
+            required: true,
+          },
+          {
+            name: "link",
+            type: "string",
+            label: "Link",
+            required: true,
+          },
+        ],
+        ui: {
           filename: {
             slugify: (values) => {
               return `${(values.title || "")
