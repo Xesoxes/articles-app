@@ -6,6 +6,7 @@ export default function Header() {
       <div className="flex gap-3">
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>
+        <Link href="/posts">Article</Link>
       </div>
     </header>
   );
