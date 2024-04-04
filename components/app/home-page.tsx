@@ -5,6 +5,7 @@ import moment from "moment";
 import Link from "next/link";
 import { tinaField, useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { TextBox, PullQuote, CaptionImage, VideoPlayer } from "../RichText";
 
 export function HomePageComponents(props: {
   data: HomePageQuery;
@@ -22,7 +23,10 @@ export function HomePageComponents(props: {
     <section className="prose-xl mx-auto w-full max-w-4xl dark:prose-invert">
       <h1 data-tina-field={tinaField(data.page, "title")}>{title}</h1>
       <article data-tina-field={tinaField(data.page, "body")}>
-        <TinaMarkdown content={content} />
+        <TinaMarkdown
+          components={{ TextBox, PullQuote, CaptionImage, VideoPlayer }}
+          content={content}
+        />
       </article>
 
       {postList && postList.length > 0 && (

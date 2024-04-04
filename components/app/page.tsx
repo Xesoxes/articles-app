@@ -3,6 +3,7 @@
 import { PageQuery } from "@/tina/__generated__/types";
 import { tinaField, useTina } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { TextBox, PullQuote, CaptionImage, VideoPlayer } from "../RichText";
 
 export function PageComponent(props: {
   data: PageQuery;
@@ -21,7 +22,10 @@ export function PageComponent(props: {
     <article>
       <h1 data-tina-field={tinaField(data.page, "title")}>{title}</h1>
       <section data-tina-field={tinaField(data.page, "body")}>
-        <TinaMarkdown content={content} />
+        <TinaMarkdown
+          components={{ TextBox, PullQuote, CaptionImage, VideoPlayer }}
+          content={content}
+        />
       </section>
     </article>
   );

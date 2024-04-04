@@ -1,4 +1,5 @@
 import { defineConfig } from "tinacms";
+import { richTextComponent } from "./richtext-schema";
 
 // Your hosting provider likely exposes this as an environment variable
 const branch =
@@ -46,6 +47,7 @@ export default defineConfig({
             type: "rich-text",
             label: "Body",
             isBody: true,
+            templates: richTextComponent,
           },
         ],
         ui: {
@@ -95,6 +97,7 @@ export default defineConfig({
             type: "rich-text",
             label: "Body",
             isBody: true,
+            templates: richTextComponent,
           },
         ],
         defaultItem: () => {
